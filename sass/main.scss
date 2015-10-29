@@ -14,12 +14,13 @@ html, body {
 	-moz-osx-font-smoothing: grayscale;
 	 -webkit-font-smoothing: antialiased;
 			-moz-font-smoothing: antialiased;
-			 -ms-font-smoothing: antialiased;w
+			 -ms-font-smoothing: antialiased;
 					 font-smoothing: antialiased;
 }
 
 body {
 	color: #000;
+	background: #888888;
 	font-size: 12px;
 	@include fontReg();
 }
@@ -33,3 +34,4 @@ body {
 
 // Views
 @import "views/home";
+@import "views/experience";

@@ -21,7 +21,8 @@ ViewController.prototype.init = function() {
 	
 	// Create all views
 	this.views = {
-		'home': new Home()
+		'home': new Home(),
+		'experience': new Experience()
 	};
 
 };
@@ -133,9 +134,19 @@ ViewController.prototype.goTo = function( nextView ) {
 
 };
 
-ViewController.prototype.onViewLoadComplete = function() {
+ViewController.prototype.onViewLoadComplete = function(e) {
 	
-	
+	this.nextView._onViewLoadComplete.remove( this.onViewLoadComplete );
+
+	this._onViewLoadComplete.dispatch(e);
+
+	if ( this.currentView == null ){
+
+		app.mainLoader.animateOut();
+
+	}
+
+	this.goTo( this.nextView );	
 	
 };
 
@@ -143,7 +154,7 @@ ViewController.prototype.onViewLoadComplete = function() {
 ViewController.prototype.onViewAnimateIn = function() {
 
 	// Remove listener
-	this.nextView._onAnimateIn.remove( this.onViewAnimateIn, this );
+	this.currentView._onAnimateIn.remove( this.onViewAnimateIn, this );
 
 	// Set not busy anymore
 	this.isBusy = false;

@@ -53,7 +53,7 @@ Router.prototype.createRoutes = function() {
 
 	});
 
-	// Experience
+	// Contact
 	crossroads.addRoute( '/experience' , function(){
 
 		self._onNavigate.dispatch({
